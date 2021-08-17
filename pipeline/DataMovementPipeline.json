@@ -2,6 +2,414 @@
 	"name": "DataMovementPipeline",
 	"properties": {
 		"description": "Move marketing_csv from adelearning container into adelearningbackup container in adesa1blob1",
+		"activities": [
+			{
+				"name": "CopyActivityMarketingCSVFile",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "adelearning//marketing_data.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "adelearningbackup//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"maxRowsPerFile": 2000,
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Year_Birth",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Year_Birth",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Education",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Education",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Marital_Status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Marital_Status",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Income ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Income ",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Kidhome",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Kidhome",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Teenhome",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Teenhome",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Dt_Customer",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Dt_Customer",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Recency",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Recency",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntWines",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntWines",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntFruits",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntFruits",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntMeatProducts",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntMeatProducts",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntFishProducts",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntFishProducts",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntSweetProducts",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntSweetProducts",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MntGoldProds",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MntGoldProds",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumDealsPurchases",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NumDealsPurchases",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumWebPurchases",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NumWebPurchases",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumCatalogPurchases",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NumCatalogPurchases",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumStorePurchases",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NumStorePurchases",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumWebVisitsMonth",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NumWebVisitsMonth",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptedCmp3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AcceptedCmp3",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptedCmp4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AcceptedCmp4",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptedCmp5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AcceptedCmp5",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptedCmp1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AcceptedCmp1",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptedCmp2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AcceptedCmp2",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Response",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Response",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Complain",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Complain",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Country",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_MarkeringCSVSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_MarketingCSVSink",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
 		"folder": {
 			"name": "August17"
 		},
