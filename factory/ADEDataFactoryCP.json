@@ -1,0 +1,9 @@
+{
+	"name": "ADEDataFactoryCP",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e3633edd-1898-48b3-98a0-2fab40b2b9fc",
+		"tenantId": "cb297063-5ec1-45de-b54f-94c8133072f6"
+	}
+}
