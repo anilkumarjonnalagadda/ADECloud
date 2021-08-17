@@ -1,0 +1,10 @@
+{
+	"name": "DataMovementPipeline",
+	"properties": {
+		"description": "Move marketing_csv from adelearning container into adelearningbackup container in adesa1blob1",
+		"folder": {
+			"name": "August17"
+		},
+		"annotations": []
+	}
+}
